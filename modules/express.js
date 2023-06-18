@@ -11,6 +11,7 @@ const methodOverride = require('method-override');
 const UserModel = require('../src/models/user.model');
 const bcrypt = require("bcrypt");
 const passport = require('passport');
+const home = require('../src/routes/home');
 require('../src/auth/passport-config')(passport);
 
 const app = express();
@@ -80,7 +81,6 @@ app.delete('/logout', (req, res) => {
     })
 });
 
-
 //Verificar se Usuario esta autenticado
 function checkAuthenticated(req, res, next){
     if(req.isAuthenticated()){
@@ -96,10 +96,6 @@ function checkNotAuthenticated(req, res, next){
     }
     next();
 }
-
-
-
-
 
 /* ----- REGISTER ----- */ 
 //Register
@@ -127,6 +123,13 @@ app.post('/register', async (req, res) => {
     }
 
 });
+
+
+//Rotas - Home
+app.use('/home', home)
+
+
+
 
 /* -------------------- */ 
 
