@@ -34,7 +34,9 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg");
     res.locals.error_msg = req.flash("error_msg");
-    res.locals.error = req.flash('error')
+    res.locals.error = req.flash('error');
+
+    // res.locals.teste = "USUARIO TESTE";
     next();
 })
 
@@ -42,6 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static('./public'));
+
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 
@@ -57,7 +60,10 @@ app.get('/', checkNotAuthenticated, (req, res) => {
 
 //Home
 app.get("/home", checkAuthenticated,  (req, res) => {
-	res.render("home", { user: req.user.username });
+    console.log("USUARIO LOGADO: " + req.user.username)
+    res.locals.username = req.user.username; //Guarda a referencia do Username em uma variavel global
+
+    res.render("home", { user: res.locals.username });
 })
 
 app.post('/', (req, res, next) => {

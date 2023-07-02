@@ -1,47 +1,57 @@
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-dark" id="main-header">
-    
-    <!-- Left navbar links -->
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
-    </div>
+<div id="app-header">
 
-    <!-- Center navbar links -->
-    <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="#">Ali Ahmad App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-2">
 
-    <!-- Right navbar links -->
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
+        <!-- Nav bars  -->
+        <div class="side-nav-button p-2 me-3 text-light" onclick="sideNavToggle()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
 
-            <div class="btn-group">
+        <!-- Header -->
+        <a class="navbar-brand px-4" href="/home">Header</a>
 
-                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class='far fa-user'></i>
-                    Menu
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Perfil</a>
-                    <a class="dropdown-item" href="#">Another </a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <form action="/logout?_method=DELETE" method="POST">
-                    <button class="nav-link fw-bold py-1 px-100 btn p=3 text-white" type="submit" id="btnLogout">Logout</button>
-                    </form>
-                </div>
+        <!-- Nav items -->
+        <div class="navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Menu 1
+                    </a>
 
-            </div>
-        </ul>
-    </div>
-</nav>
-<!-- /.navbar -->
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Child 1</a></li>
+                        <li><a class="dropdown-item" href="#">Child 2</a></li>
+                        <li><a class="dropdown-item" href="#">Child 3</a></li>
+                        <li><a class="dropdown-item" href="#">Child 4</a></li>
+                    </ul>
 
+                </li>
+            </ul>
+        </div>
 
+        <!-- Search -->
+        <form class="d-flex me-5">
+            <input class="form-control me-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+
+        <!-- Profile button -->
+        <div class="profile-logo dropstart">
+            <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+                <%= username  %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a href="/home/profile" class="dropdown-item">Profile</a></li>
+                <li><a href="#" class="dropdown-item">Settings</a></li>
+                <hr>
+                
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button class="nav-link fw-bold py-1 px-100 btn p=3 text-white" type="submit" id="btnLogout" href="/logout?_method=DELETE">Logout</button>
+                    <!-- <li><a href="/logout?_method=DELETE" type="submit" id="btnLogout" class="dropdown-item">Logout</a></li> -->
+                </form>
+            </ul>
+        </div>
+
+    </nav>
+
+</div>
